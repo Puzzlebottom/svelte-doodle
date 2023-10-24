@@ -7,7 +7,7 @@
   };
 
   const addAgent = () => {
-    agents = [...agents, agents.length];
+    agents = [...agents, { id: agents.length }];
   };
 
   const clusterAgent = (agent, cluster) => {};
@@ -26,7 +26,7 @@
       <Cluster />
     {/each}
     {#each agents as agent}
-      <Agent />
+      <Agent id={agent.id} />
     {/each}
   </div>
 </main>
