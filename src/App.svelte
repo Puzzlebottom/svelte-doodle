@@ -3,7 +3,7 @@
   import Cluster from "./lib/Cluster.svelte";
 
   const addCluster = () => {
-    clusters = [...clusters, clusters.length];
+    clusters = [...clusters, { id: clusters.length }];
   };
 
   const addAgent = () => {
@@ -21,9 +21,9 @@
     <button on:click={addCluster}>NEW CLUSTER</button>
     <button on:click={addAgent}>NEW AGENT</button>
   </div>
-  <div class="cluster-container">
+  <div class="container">
     {#each clusters as cluster}
-      <Cluster />
+      <Cluster id={cluster.id} />
     {/each}
     {#each agents as agent}
       <Agent id={agent.id} />
@@ -36,10 +36,5 @@
     display: flex;
     flex-direction: column;
     width: fit-content;
-  }
-
-  div.cluster-container {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
   }
 </style>
