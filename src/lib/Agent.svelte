@@ -6,6 +6,8 @@
 <style>
   div.agent {
     display: flex;
+    justify-self: center;
+    align-self: center;
     justify-content: center;
     align-items: center;
     border: thick solid;
