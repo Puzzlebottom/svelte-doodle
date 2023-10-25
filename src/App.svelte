@@ -17,29 +17,28 @@
   };
 
   const drag = (e) => {
-    if (dragging !== null) {
-      if (dragging.entity === "agent") {
-        const agent = agents[dragging.id];
-        const top = agent.top + e.movementY;
-        const left = agent.left + e.movementX;
-        const updatedAgent = { ...agent, top, left };
+    if (dragging && dragging.entity === "agent") {
+      const agent = agents.find((agent) => agent.id === dragging.id);
+      const top = agent.top + e.movementY;
+      const left = agent.left + e.movementX;
+      const updatedAgent = { ...agent, top, left };
+      console.log(agents.filter((agent) => agent.id !== dragging.id));
 
-        agents = [
-          ...agents.filter((agent) => agent.id !== dragging.id),
-          updatedAgent,
-        ];
-      }
-      if (dragging.entity === "cluster") {
-        const cluster = clusters[dragging.id];
-        const top = cluster.top + e.movementY;
-        const left = cluster.left + e.movementX;
-        const updatedCluster = { ...cluster, top, left };
+      agents = [
+        ...agents.filter((agent) => agent.id !== dragging.id),
+        updatedAgent,
+      ];
+    }
+    if (dragging && dragging.entity === "cluster") {
+      const cluster = clusters.find((cluster) => cluster.id === cluster.id);
+      const top = cluster.top + e.movementY;
+      const left = cluster.left + e.movementX;
+      const updatedCluster = { ...cluster, top, left };
 
-        clusters = [
-          ...clusters.filter((cluster) => cluster.id !== dragging.id),
-          updatedCluster,
-        ];
-      }
+      clusters = [
+        ...clusters.filter((cluster) => cluster.id !== dragging.id),
+        updatedCluster,
+      ];
     }
   };
 
