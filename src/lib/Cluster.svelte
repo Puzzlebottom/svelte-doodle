@@ -3,8 +3,7 @@
   export let top;
   export let left;
   export let grab;
-
-  const agents = [];
+  export let agents = ["moneky"];
 </script>
 
 <div class="container">
@@ -17,6 +16,9 @@
     role="button"
   >
     Cluster {id}
+    {#each agents as agent}
+      <span>{agent}</span>
+    {/each}
   </div>
 </div>
 
