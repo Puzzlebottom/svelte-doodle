@@ -74,6 +74,8 @@
       clusters.forEach((cluster) => {
         if (isOverlapping(agent, cluster)) {
           clusterAgent(agent, cluster);
+        } else {
+          unclusterAgent(agent, cluster);
         }
       });
     }
@@ -84,6 +86,14 @@
     const updatedCluster = {
       ...cluster,
       agents: [...cluster.agents.filter((id) => id !== agent.id), agent.id],
+    };
+    updateClusters(updatedCluster);
+  };
+
+  const unclusterAgent = (agent, cluster) => {
+    const updatedCluster = {
+      ...cluster,
+      agents: [...cluster.agents.filter((id) => id !== agent.id)],
     };
     updateClusters(updatedCluster);
   };
